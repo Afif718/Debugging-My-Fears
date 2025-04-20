@@ -2,10 +2,11 @@
 
 int main(){
 
-    int arr_size = 100;
-    int arr[arr_size];
+    int arr_size;
 
     scanf("%d", &arr_size);
+
+    int arr[arr_size];
 
     for(int i=0; i<arr_size; i++){
         scanf("%d", &arr[i]);
@@ -34,9 +35,13 @@ int main(){
         new_arr[i] = arr[i-1];
     }
 
+     //now add the new value to the index
+     new_arr[index] = new_val;
+
     //print the array
     for(int i=0; i<arr_size+1; i++){
-        new_arr[index] = new_val;
+
+        //print the new array
         printf("%d ", new_arr[i]);
     }
 
