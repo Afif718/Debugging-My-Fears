@@ -1,5 +1,9 @@
 #include<stdio.h>
 
+//this array insertion using a new array, copying old array values into it
+//And then inserting the new value into the index
+//then printing it 
+
 int main(){
 
     int arr_size;
@@ -33,12 +37,14 @@ int main(){
     for(int i=arr_size+1; i>index; i--){
         //printf("%d ", i-1);
         new_arr[i] = arr[i-1];
+        //printf("%d ", i);
+        //printf("%d ", i-1);
     }
 
-     //now add the new value to the index
+     //now add the new value to the new index
      new_arr[index] = new_val;
 
-    //print the array
+    // //print the array
     for(int i=0; i<arr_size+1; i++){
 
         //print the new array
