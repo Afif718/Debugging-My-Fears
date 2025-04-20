@@ -40,18 +40,5 @@ int main(){
         printf("%d ", new_arr[i]);
     }
 
-    // //shift from right to left
-    // for(int i=arr_size+1; i>=0; i--){
-    //     new_arr[i] = arr[i-1];
-    //     new_arr[index]=new_val;
-    // }
-
-    // printf("\n");
-
-    // //print the array 
-    // for(int i=0; i<arr_size+1; i++){
-    //     printf("%d ", new_arr[i]);
-    // }
-
     return 0;
 }
