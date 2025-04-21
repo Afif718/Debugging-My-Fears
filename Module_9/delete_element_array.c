@@ -31,13 +31,14 @@ int main(){
           a[4] = a[5] */
     for(int i=rev_index; i<arr_size; i++){
         //printf("%d ", i+1);
-        
-
         arr[i] = arr[i+1];
     }
 
+    //reduce the array size by 1
+    arr_size--;
+
     //print the array
-    for(int i=0; i<arr_size-1; i++){
+    for(int i=0; i<arr_size; i++){
         printf("%d ", arr[i]);
     }
 
