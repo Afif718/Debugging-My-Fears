@@ -34,6 +34,11 @@ int main(){
     }
 
     //shift from right to left
+    // <------------------
+    /*    a[5] = a[4]
+          a[4] = a[3]
+          a[3] = a[2]
+          a[2] = a[1] */
     for(int i=arr_size+1; i>index; i--){
         //printf("%d ", i-1);
         new_arr[i] = arr[i-1];
