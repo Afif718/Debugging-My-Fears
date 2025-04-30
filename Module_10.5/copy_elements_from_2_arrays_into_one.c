@@ -29,6 +29,7 @@ int main(){
     int mergedArray[mergedArraySize];
 
     // Copy elements of the first array into the merged array
+    //lets say 1 2 3 4 5
     for(int i = 0; i < firstArraySize; i++){
         mergedArray[i] = firstArray[i];
     }
