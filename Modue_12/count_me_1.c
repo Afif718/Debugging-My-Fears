@@ -35,3 +35,5 @@ int main(){
 
     return 0;
 }
+
+//problem link: https://www.hackerrank.com/contests/mid-term-a-introduction-to-c-programming-a-batch-07/challenges/count-me-2-1
