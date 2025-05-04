@@ -12,10 +12,11 @@ int main(){
         //printf("*\n");
         for(int i=star1; i>=1; i--){
             /*
+            *****
+            ****
+            ***
+            **
             *
-            * *
-            * * *
-            * * * *
             */
             printf("*"); //for printing starts 
         }

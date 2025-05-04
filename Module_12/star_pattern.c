@@ -8,6 +8,13 @@ int main(){
 
     for(int i=1; i<=n; i++){ //for printing lines
         //printf("*\n");
+        /*
+        *
+        **
+        ***
+        ****
+        *****
+        */
         for(int i=1; i<=star; i++){ //for printing starts
             printf("*");
         }

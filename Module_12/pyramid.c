@@ -15,10 +15,10 @@ int main(){
 
         for(int j=1; j<=star; j++){ // this is for printing the stars
             /*
-            *
-            ***
-            *****
-            *******
+                *
+               ***
+              *****
+             *******
             *********
             */
             printf("*");

@@ -8,6 +8,13 @@ int main(){
     int space=n-1;
 
     for(int i=1; i<=n; i++){
+        /*
+                *********
+                 *******
+                  *****
+                   ***
+                    *
+        */
 
         //this loop is for priniting spaces
         for(int j=0; j<space; j++){
