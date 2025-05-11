@@ -1,4 +1,3 @@
-#include<stdio.h>
 
 void count(int i, int n){
 
