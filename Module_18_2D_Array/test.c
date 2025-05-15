@@ -22,8 +22,10 @@ int main(){
     //look at the pattern here row starting from 0 and col staring from the end
     for(int i=0; i<3; i++){
         //printf("%d ", i);
-        for(int j=3-1; j>=0; j--){
-            printf("%d ", i);
+        for(int j=0; j<3; j++){
+            if(i+j == 3-1){
+                printf("%d %d", i, j);
+            }
         }
         printf("\n");
     }
