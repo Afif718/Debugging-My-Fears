@@ -1,73 +1,46 @@
 #include<stdio.h>
 
-int main() {
+int main(){
+
     int arr_size;
-    scanf("%d", &arr_size);  // Example input: 4
+    scanf("%d", &arr_size);  // Take the size of the array as input
+    int arr[arr_size];
 
-    int array[arr_size];
-
-    // Example input values: 2 0 0 5
-    for(int i = 0; i < arr_size; i++) {
-        scanf("%d", &array[i]);
+    // Input array elements
+    for(int i = 0; i < arr_size; i++){
+        scanf("%d", &arr[i]);
     }
 
-    int nonZeroIndex = 0;     // Tracks where to place the next non-zero value
-    int zeroCount = 0;        // Counts number of zeros
+    int increment = 0;     // This variable keeps track of where to place the next non-zero value
+    int count_zero = 0;    // This will count how many zeros are present in the array
 
-    // First loop: move non-zero elements to the front
-    for(int i = 0; i < arr_size; i++) {
-        if(array[i] != 0) {
-            array[nonZeroIndex] = array[i];
-            nonZeroIndex++;
+    // Iterate through the array to shift all non-zero elements to the front
+    for(int i = 0; i < arr_size; i++){
+
+        if(arr[i] != 0){
+            // If current element is not zero, move it to the 'increment' index
+            // This helps compact all non-zero elements to the left, preserving their order
+            arr[increment] = arr[i];
+
+            increment++;  // Move increment forward for the next non-zero placement
         } else {
-            zeroCount++;
+            count_zero++; // Keep track of zeros encountered
         }
-
-        /*
-        Step-by-step trace for input: 2 0 0 5
-
-        i = 0 → array[0] = 2 (non-zero)
-            → array[0] = 2
-            → nonZeroIndex = 1
-
-        i = 1 → array[1] = 0 (zero)
-            → zeroCount = 1
-
-        i = 2 → array[2] = 0 (zero)
-            → zeroCount = 2
-
-        i = 3 → array[3] = 5 (non-zero)
-            → array[1] = 5
-            → nonZeroIndex = 2
-
-        Now array = [2, 5, ?, ?]
-        */
-
     }
 
-    // Second loop: fill in the zeros from the end
-    for(int i = arr_size - 1; i >= arr_size - zeroCount; i--) {
-        array[i] = 0;
-
-        /*
-        zeroCount = 2
-        arr_size = 4
-
-        Fill from index 3 to 2 with 0s
-        i = 3 → array[3] = 0
-        i = 2 → array[2] = 0
-
-        Final array = [2, 5, 0, 0]
-        */
+    // Now, fill the rest of the array with zeros starting from the 'increment' index
+    for(int i = arr_size - 1; i >= arr_size - count_zero; i--){
+        arr[i] = 0;
     }
 
-    // Output result
-    for(int i = 0; i < arr_size; i++) {
-        printf("%d ", array[i]);
+    // Print the final array with all zeros shifted to the right
+    for(int i = 0; i < arr_size; i++){
+        printf("%d ", arr[i]);
     }
 
     return 0;
 }
+
 
 
 //I solved it
