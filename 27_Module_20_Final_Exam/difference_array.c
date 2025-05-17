@@ -63,3 +63,5 @@ int main(){
     
     return 0;
 }
+
+//problem link: https://www.hackerrank.com/contests/final-exam-a-introduction-to-c-programming-a-batch-07/challenges/difference-array
