@@ -10,6 +10,8 @@ int main(){
     *x = 1010;
 
     cout << *x << " " << s << endl;
+    //delete x; //we can also delete an dynamic variable
+    //delete[] array; // delete dynamic array
 
     return 0;
 }
