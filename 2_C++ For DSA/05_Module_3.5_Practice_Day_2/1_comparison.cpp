@@ -15,9 +15,6 @@ int main(){
     char s;
     cin >> a >> s >> b;
 
-    //cout << s;
-    bool isright= false;
-
     if(s == '>'){
         a>b? cout << "Right" : cout << "Wrong";
     } 
