@@ -13,16 +13,16 @@ int main(){
 
     bool isPalindrome = true;
 
-    int start = 0;
-    int end = arr_size - 1;
+    int left = 0;
+    int right = arr_size - 1;
 
-    while(start < end){
-        if(arr[start] != arr[end]){
+    while(left < right){
+        if(arr[left] != arr[right]){
             isPalindrome = false;
             break;
         }
-        start ++;
-        end --;
+        left ++;
+        right --;
     }
 
     if(isPalindrome){
