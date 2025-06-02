@@ -17,9 +17,11 @@ int main(){
         int min_result = INT_MAX;
         
         for(int i = 0; i < num; i++){
-            for(int j = i+1; j < num; j++){
-                int current_result = arr[i] + arr[j] + (j + 1) - (i + 1);
-                min_result = min(min_result, current_result);
+            for(int j = i; j < num; j++){
+                if(i!=j){
+                    int current_result = arr[i] + arr[j] + (j + 1) - (i + 1);
+                    min_result = min(min_result, current_result);
+                }
             }
         }
         
