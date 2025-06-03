@@ -15,8 +15,13 @@ int main(){
 
     //now print all the characters using iterator not using i
     //it will be usefull for some data structurs where there is no index
-    for(string::iterator it = str.begin(); it<str.end(); it++){
-        cout << *it << endl; // prints the character one after another
+    // for(string::iterator it = str.begin(); it<str.end(); it++){
+    //     cout << *it << endl; // prints the character one after another
+    // }
+
+    //for newer c++ versions we can use the iterator like this
+    for(auto it=str.begin(); it<str.end(); it++){
+        cout << *it << endl;
     }
 
     return 0;
