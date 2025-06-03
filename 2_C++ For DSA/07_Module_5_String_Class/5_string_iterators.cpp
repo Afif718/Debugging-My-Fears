@@ -21,7 +21,7 @@ int main(){
 
     //for newer c++ versions we can use the iterator like this
     for(auto it=str.begin(); it<str.end(); it++){
-        cout << *it << endl;
+        cout << *it << endl; //de-reference
     }
 
     return 0;
