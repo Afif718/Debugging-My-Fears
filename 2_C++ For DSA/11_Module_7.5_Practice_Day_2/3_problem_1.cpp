@@ -36,3 +36,17 @@ int main(){
     
     return 0;
 }
+
+/*
+
+Question: Make a class named Student. Write a program to take a positive integer N as input and make an Student array of size N. 
+Student 
+{
+	name;
+	roll;
+	marks;
+}
+Your task is to sort the Students data according to the marks in descending order. If multiple students have the same marks then sort them according to the roll in ascending order as the roll will be unique.
+Note: name will not contain any spaces.
+
+*/

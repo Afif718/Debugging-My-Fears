@@ -28,3 +28,18 @@ int main(){
     
     return 0;
 }
+
+/*
+
+Question: Make a class named Student. Write a program to take a positive integer N as input and make an Student array of size N. 
+Student 
+{
+	name;
+	roll;
+	marks;
+}
+Your task is to reverse the array and print the array of Student.
+Note: name will not contain any spaces.
+
+
+*/
