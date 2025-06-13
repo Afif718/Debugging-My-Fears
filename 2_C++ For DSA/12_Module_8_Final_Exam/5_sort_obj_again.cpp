@@ -16,8 +16,15 @@ class Student {
 };
 
 bool cmp(Student l, Student r){
+    if(l.eng_marks == r.eng_marks){
+        return l.math_marks > r.math_marks;
+    } else if (l.math_marks == r.math_marks){
+        return l.id < r.id;
+    } else{
+        return l.eng_marks > r.eng_marks;
+    }
 
-    return (l.eng_marks == r.eng_marks) ? l.math_marks > r.math_marks : l.eng_marks > r.eng_marks;
+
 }
 
 int main(){
