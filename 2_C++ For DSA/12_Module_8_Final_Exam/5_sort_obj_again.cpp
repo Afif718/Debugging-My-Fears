@@ -16,12 +16,12 @@ class Student {
 };
 
 bool cmp(Student l, Student r){
-    if(l.eng_marks == r.eng_marks){
-        return l.math_marks > r.math_marks;
-    } else if (l.math_marks == r.math_marks){
-        return l.id < r.id;
-    } else{
+    if(l.eng_marks != r.eng_marks){
         return l.eng_marks > r.eng_marks;
+    } else if (l.math_marks != r.math_marks){
+        return l.math_marks > r.math_marks;
+    } else{
+        return l.id < r.id;
     }
 
 
@@ -41,7 +41,7 @@ int main(){
     //sort the array based on sum of eng and math marks
     sort(arr, arr+arr_size, cmp);
 
-    cout << "\n";
+    //cout << "\n";
 
     //print the sorted array of objects
     for(int i=0; i<arr_size; i++){
