@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-    int n;
+    int n;  // O(1)
     cin >> n; // O(1) - Input takes constant time
 
     /*
