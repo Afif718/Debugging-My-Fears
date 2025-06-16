@@ -1,0 +1,52 @@
+Understanding Time Complexities (Assume N = 1000)
+
+1. Constant Time → O(1)
+   - Example: Accessing an array element, assigning a variable
+   - O(1) → just 1 operation
+   - Total operations ≈ 1
+
+2. Linear Time → O(N)
+   - Example: Traversing an array or loop running N times
+   - O(1000) → runs exactly 1000 times
+   - Total operations ≈ 1000
+
+3. Logarithmic Time → O(log N)
+   - Example: Binary Search
+   - O(log₂ 1000) ≈ 10
+   - Total operations ≈ 10
+
+4. Square Root Time → O(√N)
+   - Example: Finding divisors of a number
+   - O(√1000) ≈ 31.6 → round to 32
+   - Total operations ≈ 32
+
+5. Quadratic Time → O(N²)
+   - Example: Nested loops (e.g., Bubble Sort)
+   - O(1000²) → 1,000,000
+   - Total operations ≈ 1,000,000
+
+6. Linearithmic Time → O(N log N)
+   - Example: Merge Sort, Quick Sort (avg. case), nested loop with log growth
+   - O(1000 × log₂ 1000) → 1000 × 10 = 10,000
+   - Total operations ≈ 10,000
+
+
+---------------------------------------------------
+⚡ Time Complexities Ranked (Best to Worst)
+---------------------------------------------------
+
+1. Constant        → O(1)             ≈ 1 operation
+2. Logarithmic     → O(log N)         ≈ 10 operations
+3. Square Root     → O(√N)            ≈ 32 operations
+4. Linear          → O(N)             ≈ 1000 operations
+5. Linearithmic    → O(N log N)       ≈ 10,000 operations
+6. Quadratic       → O(N²)            ≈ 1,000,000 operations
+
+⚠️ Note: The actual performance also depends on hardware, constants, and input size, but Big-O gives a high-level growth idea.
+
+---------------------------------------------------
+
+✅ Tip: When writing algorithms, always aim for:
+- O(1) or O(log N) for fast performance
+- Avoid O(N²) or worse for large inputs (e.g., N > 10⁵)
+
