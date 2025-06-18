@@ -24,6 +24,8 @@ int main() {
     // Find the first occurrence of a value in the vector
     // Syntax: find(start_iterator, end_iterator, target_value)
     // Returns an iterator pointing to the element if found, otherwise returns v.end()
+
+
     */
 
     auto it = find(v.begin(), v.end(), 5);
@@ -37,6 +39,19 @@ int main() {
         //To get the index of the found element, subtract iterator positions
         int index = it - v.begin();
         cout << "Found at index: " << index << "\n";
+    }
+
+    //print the last element of the vector
+    //cout << "Last element " << v[v.size() - 1] << endl;
+    cout << "Last element " << v.back() << endl;
+    //print the first element of the vector
+    cout << "First element " << v[0] <<endl;
+    //cout << "First element " << v.front() <<endl;
+
+    //print the vector using iterator
+    for(auto it=v.begin(); it<v.end(); it++){
+        //dereferencing vector gives actual value
+        cout << *it << " ";
     }
 
     return 0;
