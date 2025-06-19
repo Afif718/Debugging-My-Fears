@@ -14,7 +14,7 @@ int main(){
     for(int i=0; i<vector_size; i++){
         if(v[i]>0){
             replace(v.begin(), v.end(), v[i], 1);
-        } else{
+        } else if(v[i]<0){
             replace(v.begin(), v.end(), v[i], 2);
         }
     }
@@ -24,3 +24,5 @@ int main(){
     }
     return 0;
 }
+
+//problem link: https://codeforces.com/group/MWSDmqGsZm/contest/219774/problem/C
