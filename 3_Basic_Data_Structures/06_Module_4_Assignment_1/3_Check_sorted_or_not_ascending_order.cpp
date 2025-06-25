@@ -65,3 +65,5 @@ int main() {
 
     return 0;
 }
+
+//problem link: https://www.hackerrank.com/contests/assignment-01-a-basic-data-structure-a-batch-07/challenges/sorted-2-2
