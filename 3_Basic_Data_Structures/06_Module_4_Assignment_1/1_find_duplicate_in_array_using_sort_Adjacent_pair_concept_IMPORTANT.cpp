@@ -76,3 +76,6 @@ int main() {
         - Easily handles N = 100000 within time limits
     */
 }
+
+
+//problem link: https://www.hackerrank.com/contests/assignment-01-a-basic-data-structure-a-batch-07/challenges/duplicate-12/problem
