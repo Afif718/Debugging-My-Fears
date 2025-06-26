@@ -3,45 +3,46 @@ using namespace std;
 
 int main() {
     int n;
-    cin >> n; // Input must be odd and >= 1
+    cin >> n; // ✅ Input odd number (1, 3, 5, 7, etc.)
 
     for (int i = 0; i < n; i++) {
-        // Top part
+
+        // ✅ Top half (before center): rows 0 to n/2 - 1
         if (i < n / 2) {
-            // Step 1: leading spaces
+            // Print leading spaces
             for (int s = 0; s < i; s++) cout << " ";
 
-            // Step 2: '\'
-            cout << "\\";
+            cout << "\\"; // Print left slash
 
-            // Step 3: inner spaces
-            int inner = n - 2 * i - 2;
+            // Middle gap (spaces between \ and /)
+            int inner = n - 2 * i - 2; // Key formula
             for (int s = 0; s < inner; s++) cout << " ";
 
-            // Step 4: '/'
-            cout << "/";
+            cout << "/"; // Print right slash
         }
 
-        // Middle row
+        // ✅ Middle line (center row): row n/2
         else if (i == n / 2) {
+            // Print n/2 spaces before X
             for (int s = 0; s < i; s++) cout << " ";
             cout << "X";
         }
 
-        // Bottom part (mirror of top)
+        // ✅ Bottom half (after center): rows n/2 + 1 to n-1
         else {
-            int j = n - 1 - i; // Mirror row of top part
+            int j = n - 1 - i; // Mirror row index
 
             for (int s = 0; s < j; s++) cout << " ";
-            cout << "/";
 
-            int inner = n - 2 * j - 2;
+            cout << "/"; // Print forward slash
+
+            int inner = n - 2 * j - 2; // Same formula
             for (int s = 0; s < inner; s++) cout << " ";
 
-            cout << "\\";
+            cout << "\\"; // Print backslash
         }
 
-        cout << "\n"; // Move to next row
+        cout << "\n"; // ✅ Move to next line
     }
 
     return 0;
