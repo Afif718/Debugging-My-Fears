@@ -25,7 +25,7 @@ int main(){
 
     cout << head->val <<endl; // head is a pointer and it will print first 
     cout << head->next->val << endl; // it will print a
-    // cout << head->next->next.val << endl;
+    cout << head->next->next->val << endl;
     
     return 0;
 }
