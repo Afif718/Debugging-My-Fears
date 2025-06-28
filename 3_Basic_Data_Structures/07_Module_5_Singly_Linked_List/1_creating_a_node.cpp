@@ -26,29 +26,37 @@ class Node{
     public:
         int val;       // holds the value/data
         Node* next;    // holds the address of the next node in the list
+
+    // Use constructor to set values easily when creating a Node
+    Node(int val){
+        this->val = val;         // assign the passed value to this node's val
+        this->next = NULL;       // initially the next pointer is NULL (no connection yet)
+    }
 };
 
 int main(){
 
-    // Creating three nodes (a, b, c) manually for demonstration
-    Node a, b, c;
+    // Creating three nodes (a, b, c) using the constructor
+    Node a(10), b(20), c(300); // val is set, and next is initialized to NULL automatically
 
-    // Assigning values to each node
-    a.val = 10;
-    b.val = 20;
-    c.val = 30;
+    // No need to assign values manually anymore due to constructor
+    // a.val = 10;
+    // b.val = 20;
+    // c.val = 30;
 
     // Linking nodes to form a chain: a -> b -> c -> NULL
-    a.next = &b;  // 'a' points to 'b'
-    b.next = &c;  // 'b' points to 'c'
-    c.next = NULL; // 'c' is the last node, so its next is NULL
+    a.next = &b;  // 'a' now points to 'b'
+    b.next = &c;  // 'b' now points to 'c'
+
+    // No need to set c.next = NULL explicitly, already set in constructor
+    // c.next = NULL;
 
     /*
     Visual representation:
-    +------+     +------+     +------+
-    | 10   | --> | 20   | --> | 30   | --> NULL
-    +------+     +------+     +------+
-      (a)          (b)          (c)
+    +--------+     +--------+     +---------+
+    |  10    | --> |  20    | --> |  300    | --> NULL
+    +--------+     +--------+     +---------+
+      (a)            (b)             (c)
     */
 
     // Printing values to verify the structure
@@ -58,7 +66,7 @@ int main(){
     // Method 1 (explicit): cout << (*a.next).val << endl;
     // Method 2 (preferred): using '->' operator
     cout << a.next->val << endl;      // prints value of node b -> 20
-    cout << a.next->next->val <<endl; // prints value of node c -> 30
+    cout << a.next->next->val << endl; // prints value of node c -> 300
 
     return 0;
 }
@@ -69,5 +77,6 @@ Key Concepts Recap:
 - 'next' connects the current node to the next one in the list.
 - '->' is used to access members of a pointer to a class or struct.
 - This example demonstrates a simple singly linked list where each node links to the next.
-- In a complete program, nodes are usually created dynamically using `new` for flexibility.
+- In real-world programs, nodes are usually created dynamically using `new`, allowing runtime flexibility.
+- The constructor makes it easier to initialize nodes and reduces code repetition.
 */
