@@ -19,6 +19,7 @@ class Node{
 // ==============================================
 // Function to Insert a New Node at the Head
 // ==============================================
+//we are sending &head as refference as we are making changes into it
 void insert_at_head(Node* &head, int val){
     /*
     Steps:

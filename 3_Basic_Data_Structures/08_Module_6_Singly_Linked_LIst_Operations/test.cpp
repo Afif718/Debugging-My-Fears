@@ -12,17 +12,17 @@ class Node{
     }
 };
 
-int main(){
-    
-    Node* head = new Node(10);
-    Node* a = new Node(20);
-    Node* b = new Node(30);
-    Node* c = new Node(40);
+void insert_at_head(Node* &head, int val){
 
-    //build connection
-    head->next = a;
-    a->next = b;
-    b->next = c;
+    //create a new node
+    Node* newnode = new Node(val);
+    //establish connection between the newnode and previous head
+    newnode->next = head;
+    //update the currect head position
+    head = newnode;
+}
+
+void prient_node(Node* head){
 
     Node* temp = head;
 
@@ -30,6 +30,22 @@ int main(){
         cout << temp->val << endl;
         temp = temp->next;
     }
+}
+
+int main(){
+    
+    Node* head = new Node(10);
+    Node* a = new Node(20);
+    Node* b = new Node(30);
+
+    head->next = a;
+    a->next = b;
+
+    insert_at_head(head, 100);
+    insert_at_head(head, 200);
+    insert_at_head(head, 300);
+
+    prient_node(head);
 
     return 0;
 }
