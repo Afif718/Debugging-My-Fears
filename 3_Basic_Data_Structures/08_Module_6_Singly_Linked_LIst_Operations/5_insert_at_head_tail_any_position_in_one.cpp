@@ -25,6 +25,7 @@ void insert_at_tail(Node* &head, int val){
 
     if(head == NULL){
         head = newnode;
+        return;
     }
 
     Node* temp = head;
