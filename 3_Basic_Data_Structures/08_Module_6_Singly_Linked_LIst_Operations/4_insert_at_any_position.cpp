@@ -12,38 +12,13 @@ class Node{
     }
 };
 
-void insert_at_head(Node* &head, int val){
-    //create a new node
-    Node* newnode = new Node(val);
-    newnode->next = head;
-    head = newnode;
-}
-
-void insert_at_tail(Node* &head, int val){
-    //create a new node
-    Node* newnode = new Node(val);
-
-    if(head == NULL){
-        head = newnode;
-    }
-
-    Node* temp = head;
-
-    while(temp->next != NULL){
-        temp = temp->next;
-    }
-
-    temp->next = newnode;
-
-}
-
 void insert_at_any_position(Node* &head, int index, int val){
 
-    //first create a new node
+    //create a new node
     Node* newnode = new Node(val);
-    
     Node* temp = head;
 
+    //now we have to go to the 1 index before the mentioned index
     for(int i=0; i<index-1; i++){
         temp = temp->next;
     }
@@ -52,17 +27,18 @@ void insert_at_any_position(Node* &head, int index, int val){
     temp->next = newnode;
 }
 
-void print_node(Node* head){
+void prient_node(Node* head){
+
     Node* temp = head;
 
     while(temp != NULL){
-        cout << temp->val <<endl;
+        cout << temp->val << endl;
         temp = temp->next;
     }
 }
 
 int main(){
-
+    
     Node* head = new Node(10);
     Node* a = new Node(20);
     Node* b = new Node(30);
@@ -70,11 +46,11 @@ int main(){
     head->next = a;
     a->next = b;
 
-    insert_at_head(head, 500);
-    insert_at_tail(head, 1000);
-    insert_at_any_position(head, 2, 499);
+    insert_at_any_position(head, 2, 100);
+    insert_at_any_position(head, 2, 200);
 
-    print_node(head);
-    
+
+    prient_node(head);
+
     return 0;
 }
