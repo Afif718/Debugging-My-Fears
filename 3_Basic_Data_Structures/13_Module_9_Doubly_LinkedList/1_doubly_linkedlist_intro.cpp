@@ -47,6 +47,7 @@ void print_forward(Node* head) {
     }
 }
 
+
 // Function to print the list in backward direction (tail to head)
 void print_backward(Node* tail) {
     Node* temp = tail;
