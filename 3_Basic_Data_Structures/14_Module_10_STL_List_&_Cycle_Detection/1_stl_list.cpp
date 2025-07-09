@@ -2,73 +2,97 @@
 using namespace std;
 
 /*
-==============================================
-🔰 STL list - Overview
-==============================================
-- `list` is a **doubly linked list** implementation in the C++ Standard Template Library (STL).
-- Allows efficient insertion and deletion from **both ends and middle** (unlike vector).
-- Supports bidirectional iteration (not random access like vector/array).
-- Can store **duplicate values** and supports all fundamental operations.
+==============================
+💡 What is STL list?
+==============================
+- STL `list` is a **doubly linked list** implementation in C++ Standard Template Library.
+- It allows efficient insertion and deletion from both ends (front and back) and at any position using iterators.
+- STL `list` is **not** a dynamic array like `vector`.
 
-📌 Syntax: list<datatype> name;
+Syntax:
+    list<datatype> list_name;
 
-✅ Common operations:
-    - push_back(val)       → Insert at end
-    - push_front(val)      → Insert at front
-    - pop_back()           → Remove from end
-    - pop_front()          → Remove from front
-    - insert(it, val)      → Insert before iterator
-    - erase(it)            → Erase element at iterator
-    - size(), empty(), clear(), reverse(), sort(), etc.
+Common use-cases:
+✔ Fast insertion/deletion at any point
+✔ Maintaining ordered sequences with frequent modifications
+✘ Random access is not supported (unlike vector)
+
+Key methods:
+- `size()`, `empty()`, `clear()`, `resize()`
+- `push_back()`, `push_front()`, `pop_back()`, `pop_front()`
+- `insert()`, `erase()`
+- `begin()`, `end()`, `rbegin()`, `rend()`
+
 */
 
-int main() {
-    //============================================//
-    // 🟢 Various Ways to Declare and Initialize STL list
-    //============================================//
+int main(){
 
-    // 1. Declare an empty list
-    // list<int> l;
+    //=============================================//
+    // 👇 Declaring & Initializing STL Lists
+    //=============================================//
 
-    // 2. Declare a list with 10 elements, all initialized to 5
-    // list<int> l(10, 5);  // [5, 5, 5, 5, ..., 5] 10 times
+    // list<int> l; // Empty list
 
-    // 3. Initialize list with predefined values
-    // list<int> l = {10, 20, 30, 40, 50};
+    // list<int> l(10, 5); // List with 10 elements, all initialized to 5
 
-    // 4. Copying a list
-    // list<int> l2(l);  // l2 is a copy of l
+    // list<int> l = {10, 20, 30, 40, 50}; // Initializer list
+    // list<int> l2(l); // Copying list 'l' into 'l2'
 
-    // 5. Copy from array
+    //=============================//
+    // Copying array into list
+    //=============================//
     // int arr[5] = {1, 2, 3, 4, 5};
-    // list<int> l2(arr, arr + 5);  // Range constructor: [start, end)
+    // list<int> l2(arr, arr+5); // Copies arr[0] to arr[4] into list
 
-    // 6. Copy from vector
+    //=============================//
+    // Copying vector into list
+    //=============================//
     vector<int> v = {1, 2, 3, 4, 5};
-    list<int> l2(v.begin(), v.end());  // Copies all elements from vector v into list l2
+    list<int> l2(v.begin(), v.end());  // Copy all elements of vector v into list l2
 
-    //============================================//
-    // 🟡 Accessing Elements and Size
-    //============================================//
+    //=============================//
+    // 📌 Accessing elements
+    //=============================//
+    cout << "Size of the list: " << l2.size() << endl; // Returns number of elements in list
 
-    cout << "Size of the list: " << l2.size() << endl;  // Print size
+    // Method 1: Using iterator (commented for now)
+    // for(auto it = l2.begin(); it != l2.end(); it++){
+    //     cout << *it << " ";
+    // }
 
-    // You can't use indexing like l2[0] because list doesn't support random access.
+    // Method 2: Range-based for loop (cleaner)
+    cout << "List elements: ";
+    for(int val : l2){
+        cout << val << " ";
+    }
+    cout << endl;
 
-    //============================================//
-    // 🔵 Traversing a list using range-based for loop
-    //============================================//
+    //=============================//
+    // 🧹 Resizing the list
+    //=============================//
+
+    // l2.resize(8); // Expands list to size 8; new values = 0
+    l2.resize(8, 100); // Expands list to size 8; new values = 100
+
+    cout << "After resizing: ";
     for (int val : l2) {
         cout << val << " ";
     }
     cout << endl;
 
-    //============================================//
-    // Alternative traversal using iterators
-    //============================================//
-    // for (auto it = l2.begin(); it != l2.end(); it++) {
-    //     cout << *it << " ";
-    // }
+    //=============================//
+    // ❓ Check if list is empty
+    //=============================//
+    if(l2.empty()){
+        cout << "EMPTY LIST!" << endl;
+    } else{
+        cout << "NOT EMPTY!" << endl;
+    }
+
+    //=============================//
+    // 🧼 Clear the entire list
+    //=============================//
+    // l2.clear(); // Uncomment to clear all elements
 
     return 0;
 }
