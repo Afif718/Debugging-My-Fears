@@ -1,86 +1,117 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Node{
-    public:
-        int val;
-        Node* next;
-    
-     Node(int val){
+
+// Definition of a singly linked list node
+class Node {
+public:
+    int val;        // value of the node
+    Node* next;     // pointer to the next node
+
+    Node(int val) {
         this->val = val;
-        this->next = NULL;
+        this->next = NULL; // initially, node points to nothing
     }
 };
 
-void insert_at_tail(Node* &head, Node* &tail, int val){
-    Node* newnode = new Node(val);
-    if(head == NULL){
+// Insert a node at the end of the list
+void insert_at_tail(Node*& head, Node*& tail, int val) {
+    Node* newnode = new Node(val); // create a new node
+
+    if (head == NULL) {
+        // If list is empty, new node becomes both head and tail
         head = newnode;
         tail = newnode;
         return;
     }
 
+    // Otherwise, attach newnode to the end and update tail
     tail->next = newnode;
     tail = newnode;
 }
 
-void reverse_linkedlist(Node* &head, Node* &tail, Node* temp){
-    if(temp->next == NULL){
+/*
+====================================
+Reverse a singly linked list (recursive)
+====================================
+Logic: Recursively go to the end, then flip pointers while coming back.
+*/
+void reverse_linkedlist(Node*& head, Node*& tail, Node* temp) {
+    if (temp->next == NULL) {
+        // Base case: last node becomes new head
         head = temp;
         return;
     }
 
+    // Recursive call to reach last node
     reverse_linkedlist(head, tail, temp->next);
-    temp->next->next = temp;
-    temp->next = NULL;
-    tail = temp;
+
+    /*
+    Visualization:
+    Suppose list = 1 → 2 → 3 → 4 → 5
+
+    On call stack:
+    reverse(..., 1)
+        reverse(..., 2)
+            reverse(..., 3)
+                reverse(..., 4)
+                    reverse(..., 5) → base case (head = 5)
+
+    Now stack starts unwinding:
+    At temp = 4:
+        temp->next = 5
+        temp->next->next = temp → 5->next = 4
+        temp->next = NULL       → breaks 4->5 link
+        tail = temp             → update tail to 4
+
+    So 5 → 4
+       4 → NULL
+
+    This process continues to build:
+    5 → 4 → 3 → 2 → 1 → NULL
+    */
+
+    temp->next->next = temp;  // Make next node point back to current
+    temp->next = NULL;        // Break original forward link
+    tail = temp;              // Update tail
 }
 
-void print_node(Node* head){
+// Print the entire linked list
+void print_node(Node* head) {
     Node* temp = head;
-
-    while(temp != NULL){
+    while (temp != NULL) {
         cout << temp->val << " ";
         temp = temp->next;
     }
 }
 
-void print_reverse_node(Node* head){
-    Node* temp = head;
-
-    if(head == NULL){
-        return;
-    }
-
-    print_reverse_node(temp->next);
-     //print
+// Print list in reverse using recursion (no actual reversal)
+void print_reverse_node(Node* head) {
+    if (head == NULL) return;
+    print_reverse_node(head->next);
     cout << head->val << " ";
 }
 
-int main(){
-
+int main() {
     Node* head = NULL;
     Node* tail = NULL;
 
     int val;
-    while (true)
-    {
+    while (true) {
         cin >> val;
-
-        if(val == -1){
-            break;
-        }
-        
+        if (val == -1) break;
         insert_at_tail(head, tail, val);
     }
-    
-    
-    //print_node(head);
-    //print_reverse_node(head);
-    //cout << endl;
+
+    // Reverse the list recursively
     reverse_linkedlist(head, tail, head);
+
+    // Print reversed list
     print_node(head);    
     cout << endl;
-    cout << head->val << endl;
-    cout << tail->val << endl;
+
+    // Print new head and tail
+    cout << "Head: " << head->val << endl;
+    cout << "Tail: " << tail->val << endl;
+
     return 0;
 }
