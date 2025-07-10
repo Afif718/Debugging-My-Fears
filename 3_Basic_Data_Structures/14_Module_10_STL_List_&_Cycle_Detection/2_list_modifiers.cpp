@@ -29,7 +29,7 @@ int main() {
     //===========================================================
     // 1️⃣ Assign/Copy list
     //===========================================================
-    list<int> l = {1, 2, 3, 4, 5, 6};  // original list
+    list<int> l = {1, 2, 20, 3, 20, 4, 20, 5, 6};  // original list
 
     // Way 1: assign using iterator range
     // list<int> l2;
@@ -77,10 +77,42 @@ int main() {
     // Removes element at back: O(1)
     l.pop_back();
 
-    //delete element from a certain index
-    l.erase(next(l.begin(), 3)); // it will remove 500 from index 3
+    //===========================================================
+    // 5️⃣ Delete from specific position (index)
+    //===========================================================
+    // Erase a single element at index 3 (zero-based)
+    l.erase(next(l.begin(), 3));  // Removes value at index 3 → e.g., 500
 
-    // Print list after deletion
+    //===========================================================
+    // 6️⃣ Delete a range of elements
+    //===========================================================
+    // Deletes index 1 to 2 (e.g., 333 and 400 if present)
+    l.erase(next(l.begin(), 1), next(l.begin(), 3));
+
+    //===========================================================
+    // 7️⃣ Replace values in the list
+    //===========================================================
+    // Replaces ALL 20s with 111
+    replace(l.begin(), l.end(), 20, 111);
+
+    //===========================================================
+    // 8️⃣ Search for a value in the list
+    //===========================================================
+    // Search for the value 4
+    auto it = find(l.begin(), l.end(), 4);
+    if (it == l.end()) {
+        cout << "VALUE NOT FOUND!" << endl;
+    } else {
+        cout << "VALUE FOUND" << endl;
+
+        // Print the index of the found value
+        int index = distance(l.begin(), it); // Calculates index by counting steps from begin
+        cout << "Value 4 found at index: " << index << endl;
+    }
+
+    //===========================================================
+    // 🔁 Final state of the list
+    //===========================================================
     for (int val : l) {
         cout << val << " ";
     }
