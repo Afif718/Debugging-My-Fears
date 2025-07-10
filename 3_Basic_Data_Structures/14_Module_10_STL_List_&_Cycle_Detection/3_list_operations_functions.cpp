@@ -18,6 +18,9 @@ int main(){
     // but unique works only when the list is sorted
     l.unique();
 
+    //reverse the list using reverse function
+    l.reverse();
+
     for(int val:l){
         cout << val << " "; 
     }
