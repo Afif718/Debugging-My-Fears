@@ -77,6 +77,9 @@ int main() {
     // Removes element at back: O(1)
     l.pop_back();
 
+    //delete element from a certain index
+    l.erase(next(l.begin(), 3)); // it will remove 500 from index 3
+
     // Print list after deletion
     for (int val : l) {
         cout << val << " ";
