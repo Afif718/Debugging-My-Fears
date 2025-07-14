@@ -1,45 +1,41 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Node class to represent each element in the doubly linked list
 class Node{
     public:
-        int val;       
-        Node* next;    
-        Node* prev;    
+        int val;       // value of the node
+        Node* next;    // pointer to the next node
+        Node* prev;    // pointer to the previous node
 
-     Node(int val){
-        this->val = val;
-        this->next = NULL;
-        this->prev = NULL;
-    }
+        // Constructor to initialize a node with value
+        Node(int val){
+            this->val = val;
+            this->next = NULL;
+            this->prev = NULL;
+        }
 };
 
+// Function to insert a value at the end of the list
 void insert_at_tail(Node* &head, Node* &tail, int val){
-    // Step 1: Create a new node with the given value
-    Node* newnode = new Node(val);
+    Node* newnode = new Node(val); // create new node
 
-    // Step 2: If list is empty, initialize both head and tail with newnode
+    // if list is empty, new node becomes both head and tail
     if(head == NULL){
         head = newnode;
         tail = newnode;
         return;
     }
 
-    // If list is not empty:
-    // Step 3: Set current tail's next to the new node
+    // connect new node to the end of the list
     tail->next = newnode;
-
-    // Step 4: Set new node's prev to the current tail
     newnode->prev = tail;
-
-    // Step 5: Update the tail to point to the new node
-    tail = newnode;
+    tail = newnode; // update tail
 }
 
-//check size of double linkedlist
+// Function to count number of nodes in the list
 int linkedlist_size(Node* head){
     Node* temp = head;
-
     int size = 0;
 
     while(temp != NULL){
@@ -49,73 +45,72 @@ int linkedlist_size(Node* head){
     return size;
 }
 
+// Function to check if two doubly linked lists are the same
 void check_same_or_not(Node* head1, Node* head2){
-    int list_size1 = linkedlist_size(head1);
-    int list_size2 = linkedlist_size(head2);
+    int list_size1 = linkedlist_size(head1); // size of first list
+    int list_size2 = linkedlist_size(head2); // size of second list
     bool isSame = true;
 
     if(list_size1 == list_size2){
-        Node* temp = head1;
-        while(temp != NULL){
-            if(head1->val != head2->val){
+        Node* temp1 = head1;
+        Node* temp2 = head2;
+
+        // compare each node's value one by one
+        while(temp1 != NULL){
+            if(temp1->val != temp2->val){
                 isSame = false;
                 break;
             }
-            temp = temp->next;
+            temp1 = temp1->next;
+            temp2 = temp2->next;
         }
-    }else{
-        cout << "NO\n";
+    } else {
+        cout << "NO\n"; // sizes are not equal
         return;
     }
 
+    // print result
     if(isSame){
         cout << "YES\n";
     } else{
         cout << "NO\n";
     }
-
 }
 
-// Function to print the list from head to tail (forward direction)
+// Function to print the list from head to tail
 void print_forward(Node* head){
     Node* temp = head;
 
-    // Traverse the list using next pointers
     while(temp != NULL){
-        cout << temp->val << " ";  // print current node's value
-        temp = temp->next;         // move to next node
+        cout << temp->val << " ";
+        temp = temp->next;
     }
 }
 
-
 int main(){
-    
-    Node* head1 = NULL;  // Initially the list is empty
+    Node* head1 = NULL;
     Node* tail1 = NULL;
 
+    // input for first list
     int val1;
     while(true){
         cin >> val1;
-
-        if(val1 == -1){
-            break;
-        }
+        if(val1 == -1) break;
         insert_at_tail(head1, tail1, val1);
     }
 
-    Node* head2 = NULL;  // Initially the list is empty
+    Node* head2 = NULL;
     Node* tail2 = NULL;
 
+    // input for second list
     int val2;
     while(true){
         cin >> val2;
-
-        if(val2 == -1){
-            break;
-        }
+        if(val2 == -1) break;
         insert_at_tail(head2, tail2, val2);
     }
 
+    // check if both lists are same
     check_same_or_not(head1, head2);
 
     return 0;
