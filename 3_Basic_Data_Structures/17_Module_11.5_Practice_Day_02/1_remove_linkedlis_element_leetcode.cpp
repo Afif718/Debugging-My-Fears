@@ -43,11 +43,11 @@ public:
         }
 
         // Debugging: print the new list (can be removed later)
-        temp = newhead;
-        while (temp != NULL) {
-            cout << temp->val << " ";
-            temp = temp->next;
-        }
+        // temp = newhead;
+        // while (temp != NULL) {
+        //     cout << temp->val << " ";
+        //     temp = temp->next;
+        // }
 
         // Return the head of the new filtered list
         return newhead;
