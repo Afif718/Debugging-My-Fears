@@ -1,0 +1,16 @@
+# Ignore Word documents
+*.doc
+*.docx
+
+# Ignore PDF files
+*.pdf
+
+# Ignore common image formats
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.webp
