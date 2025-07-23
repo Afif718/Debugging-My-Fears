@@ -43,11 +43,11 @@ int main() {
 
     myStack st;  // Creating an object of custom stack
 
-    int v_size;
-    cin >> v_size;  // Input: number of elements to push into the stack
+    int st_size;
+    cin >> st_size;  // Input: number of elements to push into the stack
 
     // Reading values and pushing them onto the stack
-    for (int i = 0; i < v_size; i++) {
+    for (int i = 0; i < st_size; i++) {
         int val;
         cin >> val;
         st.push(val);  // Stack builds up: first-in goes bottom, last-in goes top
