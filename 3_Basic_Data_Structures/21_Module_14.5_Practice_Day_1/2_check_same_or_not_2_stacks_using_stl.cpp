@@ -3,7 +3,7 @@ using namespace std;
 
 int main(){
     stack<int> st;
-    stack<int> st2;
+    queue<int> q;
 
     int st_size;
     cin >> st_size;
@@ -14,27 +14,27 @@ int main(){
         st.push(val);
     }
 
-    int st2_size;
-    cin >> st2_size;
+    int q_size;
+    cin >> q_size;
 
     //input st2 vals in the stack2
-    for(int i=0; i<st2_size; i++){
+    for(int i=0; i<q_size; i++){
         int val;
         cin >> val;
-        st2.push(val);
+        q.push(val);
     }
 
     bool isSame = true;
 
-    if(st.size() == st2.size()){
-        while(!st.empty() && !st2.empty()){
-            if(st.top() != st2.top()){
+    if(st.size() == q.size()){
+        while(!st.empty() && !q.empty()){
+            if(st.top() != q.front()){
                 isSame = false;
                 break;
             }
 
             st.pop();
-            st2.pop();
+            q.pop();
         }
     } else{
         cout << "NO\n";
