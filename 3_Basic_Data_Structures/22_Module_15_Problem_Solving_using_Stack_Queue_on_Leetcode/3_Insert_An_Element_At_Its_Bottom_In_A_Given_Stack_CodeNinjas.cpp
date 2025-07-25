@@ -53,6 +53,8 @@ stack<int> pushAtBottom(stack<int>& st, int x)
 
 
 /*
+https://www.naukri.com/code360/problems/insert-an-element-at-its-bottom-in-a-given-stack_1171166
+
 Problem statement
 You are given a stack/deque of integers 'MY-STACK' and an integer ‘X’. Your task is to insert ‘X’ to the bottom of ‘MY-STACK’ and return the updated stack/deque.
 
