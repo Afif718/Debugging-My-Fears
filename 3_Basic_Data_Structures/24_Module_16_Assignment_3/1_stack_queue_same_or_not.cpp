@@ -2,45 +2,54 @@
 using namespace std;
 
 int main(){
-    stack<int> st;
-    queue<int> q;
+    stack<int> st;  // Stack to store elements (LIFO order)
+    queue<int> q;   // Queue to store elements (FIFO order)
 
     int st_size, q_size;
     cin >> st_size >> q_size;
 
+    // Input values for stack
+    // Visualization: If input is 1 2 3, then stack top is 3, bottom is 1
     for(int i=0; i<st_size; i++){
         int val;
         cin >> val;
         st.push(val);
     }
 
+    // Input values for queue
+    // Visualization: If input is 1 2 3, then queue front is 1, back is 3
     for(int i=0; i<q_size; i++){
         int val;
         cin >> val;
         q.push(val);
     }
 
-    bool isSame = true;
+    bool isSame = true; // Flag to check if sequences are the same in reversed order
 
+    // If sizes differ, they can't be same in reverse order
     if(st_size != q_size){
         cout << "NO\n";
         return 0;
     } else{
+        // Compare elements from stack and queue
+        // Stack top is last inserted (LIFO), queue front is first inserted (FIFO)
+        // If all elements match, then queue elements are reverse of stack elements
         while(!st.empty() && !q.empty()){
             if(st.top() != q.front()){
-                isSame = false;
+                isSame = false; // Found mismatch
                 break;
-
             }
 
-            st.pop();
-            q.pop();
+            st.pop(); // Remove top element from stack
+            q.pop();  // Remove front element from queue
         }
     }
 
+    // Print YES if queue is reverse of stack, otherwise NO
     cout << (isSame ? "YES\n" : "NO\n");
     return 0;
 }
+
 
 /*
 problem link: https://www.hackerrank.com/contests/assignment-03-a-basic-data-structure-a-batch-07/challenges/same-or-not-ii/problem

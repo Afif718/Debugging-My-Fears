@@ -3,30 +3,51 @@ using namespace std;
 
 int main() {
     int queries;
-    cin >> queries;
-    queue<string> str;
+    cin >> queries;  // Number of commands to process
+
+    queue<string> str;  // Queue to simulate the line of people waiting for tickets
+
+    /*
+    Commands:
+    - command_num = 0 followed by a name: A person with that name joins the end of the queue.
+    - command_num = 1: The person at the front of the queue gets the ticket and leaves the queue.
+      If the queue is empty, print "Invalid".
+    */
 
     while (queries--) {
         int command_num;
         cin >> command_num;
 
         if (command_num == 0) {
+            // Person arrives in the line
             string command;
-            cin >> command;
-            str.push(command);
+            cin >> command;  // Read person's name
+            str.push(command);  // Add person to the back of the queue
+
+            // Visualization:
+            // Queue before: front -> [ ... ] <- back
+            // After push: new person at back of queue
         } else if (command_num == 1) {
+            // Ticket is given to person at front of the line
             if (!str.empty()) {
-                string got_ticket = str.front();
-                str.pop();
-                cout << got_ticket << endl;
+                // There is someone in the queue
+                string got_ticket = str.front();  // Get name at front
+                str.pop();  // Remove person from front (they got the ticket)
+                cout << got_ticket << endl;  // Print the name of the person who got the ticket
+
+                // Visualization:
+                // Queue before: front -> [person1, person2, ...] <- back
+                // After pop: person1 leaves, queue front moves to person2
             } else {
-                cout << "Invalid\n";
+                // Queue empty, no one to give ticket to
+                cout << "Invalid\n";  // Indicate no one in line
             }
         }
     }
 
     return 0;
 }
+
 
 /*
 https://www.hackerrank.com/contests/assignment-03-a-basic-data-structure-a-batch-07/challenges/special-queries-1-1/problem

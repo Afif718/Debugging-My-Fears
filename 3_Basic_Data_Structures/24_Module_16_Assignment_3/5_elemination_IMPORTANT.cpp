@@ -3,34 +3,55 @@ using namespace std;
 
 int main(){
     int queries;
-    cin >> queries;
+    cin >> queries;  // Number of test cases to process
 
     while(queries--){
-        stack<char> st;
+        stack<char> st;  // Stack to simulate the elimination process
         
         string str;
-        cin >> str;
+        cin >> str;  // Input binary string for the current test case
+
+        /*
+        Process each character in the string:
+        - If the stack is empty, push the current character.
+        - Else, check the top of the stack and current character:
+            * If current char is '1' and top of stack is '0', 
+              this means '1' eliminates the adjacent '0' and itself.
+              So we pop '0' from the stack and do NOT push '1' (both eliminated).
+            * Else, push current character onto stack.
+        */
 
         for(char c: str){
             if(st.empty()){
+                // Stack empty, just push current character
                 st.push(c);
             } else{
                 if(c == '1' && st.top() == '0'){
-                    st.pop();
+                    // Pattern '0' followed by '1' found -> eliminate both
+                    st.pop();  // Remove '0' from stack (previous character)
+                    // Don't push '1', both eliminated
                 } else{
+                    // No elimination possible, push current char
                     st.push(c);
                 }
             }
         }
 
+        /*
+        After processing entire string, if stack is empty,
+        it means all characters were eliminated as per the rules.
+        Otherwise, some characters remain and string is not fully eliminated.
+        */
+
         if(st.empty()){
-            cout << "YES\n";
+            cout << "YES\n";  // String fully eliminated
         } else{
-            cout << "NO\n";
+            cout << "NO\n";   // Some characters remain
         }
     }
     return 0;
 }
+
 
 /*
 
