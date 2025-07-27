@@ -14,14 +14,14 @@ class Node{
     }
 };
 
-void preorder(Node* root){
+void inorder(Node* root){
     if(root == NULL){
         return;
     }
 
+    inorder(root->left);
     cout << root->val << " ";
-    preorder(root->left);
-    preorder(root->right);
+    inorder(root->right);
 }
 
 
@@ -34,16 +34,26 @@ int main(){
     Node* c = new Node(40);
     Node* d = new Node(50);
     Node* e = new Node(60);
+    Node* f = new Node(70);
+    Node* g = new Node(80);
+    Node* h = new Node(90);
+    Node* i = new Node(100);
 
-    //establish connections
     root->left = a;
     root->right = b;
 
     a->left = c;
-    b->left = d;
-    b->right = e;
+    a->right = d;
 
-    preorder(root);
+    d->left = g;
+
+    b->left = e;
+    b->right = f;
+
+    f->left = h;
+    f->right = i;
+
+    inorder(root);
     
     return 0;
 }
