@@ -3,7 +3,7 @@
 *.docx
 
 # Ignore PDF files
-*.pdf
+#*.pdf
 
 # Ignore common image formats
 *.jpg
