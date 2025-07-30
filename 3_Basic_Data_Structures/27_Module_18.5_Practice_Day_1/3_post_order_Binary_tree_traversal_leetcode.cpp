@@ -1,29 +1,23 @@
 class Solution {
 public:
-    // Helper function to perform postorder traversal and store result in 'result' vector
-    void traverse(TreeNode* root, vector<int>& result) {
-        if (root == NULL) {
-            return;  // Base case: If node is null, do nothing
+    vector<int> result;
+
+    void postorder(TreeNode* root){
+        if(root == NULL){
+            return;
         }
 
-        // 1. Traverse the left subtree first
-        traverse(root->left, result);
+        postorder(root->left);
+        postorder(root->right);
 
-        // 2. Then traverse the right subtree
-        traverse(root->right, result);
-
-        // 3. Finally, process the current root node (after left & right)
         result.push_back(root->val);
     }
 
-    // Main function
     vector<int> postorderTraversal(TreeNode* root) {
-        vector<int> result;
 
-        // Start the recursive traversal
-        traverse(root, result);
+        postorder(root);
 
-        return result;  // Return the collected postorder traversal result
+        return result;
     }
 };
 
