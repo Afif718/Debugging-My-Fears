@@ -9,19 +9,27 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
+        // Base case: If the current node is null, the depth is 0
         if(root == NULL) return 0;
 
+        // If the current node is a leaf (no left or right child), depth is 1
         if(root->left == NULL && root->right == NULL) return 1;
 
+        // Recursively compute the depth of the left subtree
         int l = maxDepth(root->left);
+
+        // Recursively compute the depth of the right subtree
         int r = maxDepth(root->right);
 
+        // The depth of the current node is the max of left and right depths + 1 (for the current node itself)
         return max(l, r) + 1;
     }
 };
+
 
 /*
 https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
