@@ -21,36 +21,59 @@ using namespace std;
 
 ************************************************************/
 
+/**
+ * LEFT SIDE VIEW OF A BINARY TREE:
+ * The left side view is the set of nodes visible when you look
+ * at the tree from the left side.
+ * At each level (depth), the leftmost node is visible.
+ * 
+ * Visualization Example:
+ * 
+ *         1
+ *        /  \
+ *       2    3
+ *      / \    \
+ *     4   5    6
+ * 
+ * Levels and their leftmost nodes:
+ * Level 1: 1       ← visible from left
+ * Level 2: 2       ← visible from left
+ * Level 3: 4       ← visible from left
+ * 
+ * Left side view result: [1, 2, 4]
+ */
+
 vector<int> getLeftView(TreeNode<int> *root)
 {
-    vector<int> result; // Stores the final left view nodes
+    vector<int> result;              // Stores the final left view nodes
 
-    // We assume that the tree will not have more than 3010 levels
-    bool freq[3010] = {false}; // Keeps track of whether a node has been added at a particular level
+    // We assume the tree won't have more than 3010 levels
+    bool freq[3010] = {false};       // Tracks if a level is already visited
 
-    queue<pair<TreeNode<int> *, int>> q; // Queue stores nodes with their level info
+    // Queue holds pairs of (node, level)
+    queue<pair<TreeNode<int> *, int>> q;
 
     if(root != NULL){
-        // Start BFS traversal from the root at level 1
+        // Start BFS traversal from root at level 1
         q.push({root, 1});
     }
 
     while(!q.empty()){
-        // Get the current node and its level
+        // Extract current node and its level
         pair<TreeNode<int> *, int> parent = q.front();
         q.pop();
 
         TreeNode<int> * node = parent.first;
         int level = parent.second;
 
-        // If this level hasn't been seen before, this node is the leftmost at this level
+        // If this level hasn't been visited, this node is the leftmost at this level
         if(freq[level] == false){
-            result.push_back(node->data); // Add to left view
+            result.push_back(node->data); // Add node to left view
             freq[level] = true;           // Mark level as visited
         }
 
-        // Enqueue left child before right child
-        // This ensures that leftmost nodes are visited first at each level
+        // Push left child before right child
+        // This ensures that the leftmost nodes at each level are processed first
         if(node->left){
             q.push({node->left, level + 1});
         }
@@ -60,8 +83,9 @@ vector<int> getLeftView(TreeNode<int> *root)
         }
     }
 
-    return result; // Return the final left view list
+    return result; // Return the left view nodes
 }
+
 
 /*
 
