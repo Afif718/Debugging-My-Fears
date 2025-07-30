@@ -36,9 +36,10 @@ bool isNodePresent(BinaryTreeNode<int> *root, int x) {
     return l || r;
 
 }
-https://www.naukri.com/code360/problems/code-find-a-node_5682?leftPanelTabValue=PROBLEM
+
 
 /*
+https://www.naukri.com/code360/problems/code-find-a-node_5682?leftPanelTabValue=PROBLEM
 
 Problem statement
 For a given Binary Tree of type integer and a number X, find whether a node exists in the tree with data X or not.
