@@ -71,39 +71,8 @@ Node* input_tree() {
 }
 
 
-void level_order(Node* root) {
-
-    if (root == NULL) {
-        cout << "NO TREE";
-        return;
-    }
-
-
-    queue<Node*> q;
-    q.push(root);
-
-    while (!q.empty()) {
-        // Step 1: Pop the front node
-        Node* f = q.front();
-        q.pop();
-
-        // Step 2: Print its value
-        cout << f->val << " ";
-
-        // Step 3: Push its children to the queue
-        if (f->left != NULL) {
-            q.push(f->left);
-        }
-
-        if (f->right != NULL) {
-            q.push(f->right);
-        }
-    }
-}
-
-
 int main() {
     Node* root = input_tree();
-    level_order(root);
+
     return 0;
 }

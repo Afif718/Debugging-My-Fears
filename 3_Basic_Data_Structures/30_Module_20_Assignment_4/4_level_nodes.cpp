@@ -1,12 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Definition of a Binary Tree Node
 class Node {
 public:
-    int val;         
-    Node* left;      
-    Node* right;     
+    int val;         // Value stored in the node
+    Node* left;      // Pointer to the left child
+    Node* right;     // Pointer to the right child
 
+    // Constructor
     Node(int val) {
         this->val = val;
         this->left = NULL;
@@ -14,16 +16,17 @@ public:
     }
 };
 
-
+// Function to take level-order input and construct the tree
 Node* input_tree() {
     int val;
-    cin >> val;
+    cin >> val;  // Read the root value
     Node* root;
 
     if (val == -1) {
-        
+        // If the value is -1, the tree is empty
         root = NULL;
     } else {
+        // Create the root node
         root = new Node(val);
     }
 
@@ -33,31 +36,35 @@ Node* input_tree() {
         q.push(root);
     }
 
-    // Building the tree level by level
+    // Level-order tree construction
     while (!q.empty()) {
-        
         Node* p = q.front();
         q.pop();
 
         int l, r;
-        cin >> l >> r;
+        cin >> l >> r; // Read left and right child values
+
         Node* myLeft, *myRight;
 
+        // Create left child if value is not -1
         if (l == -1) {
             myLeft = NULL;
         } else {
             myLeft = new Node(l);
         }
 
+        // Create right child if value is not -1
         if (r == -1) {
             myRight = NULL;
         } else {
             myRight = new Node(r);
         }
 
+        // Link children to current node
         p->left = myLeft;
         p->right = myRight;
 
+        // Push children to queue to continue level-order construction
         if (p->left) {
             q.push(p->left);
         }
@@ -70,26 +77,26 @@ Node* input_tree() {
     return root;
 }
 
+// Function to collect all nodes at a given level x
 void level_nodes(Node* root, vector<int>& result , int x){
-    queue<pair<Node*, int>> q;
+    queue<pair<Node*, int>> q; // Pair contains node and its level
 
     if(root != NULL){
-        q.push({root,0});
+        q.push({root, 0}); // Start with root at level 0
     }
 
-    bool isInvalid_level = false;
-
     while(!q.empty()){
-        pair<Node*, int> parent = q.front();
+        pair<Node*, int> parent = q.front(); // Get front node with level
         q.pop();
 
         Node* node = parent.first;
         int level = parent.second;
 
         if(level == x){
-            result.push_back(node->val);
+            result.push_back(node->val); // If current level matches x, add to result
         } 
 
+        // Enqueue left and right children with incremented level
         if(node->left){
             q.push({node->left, level+1});
         }
@@ -97,32 +104,31 @@ void level_nodes(Node* root, vector<int>& result , int x){
         if(node->right){
             q.push({node->right, level+1});
         }
-        
     }
-
-
 }
 
+// Main function
 int main() {
-    Node* root = input_tree();
+    Node* root = input_tree();  // Build the tree from user input
 
     int x;
-    cin >> x;
-    
+    cin >> x; // Read the target level
+
     vector<int> result;
 
-    level_nodes(root, result, x);
+    level_nodes(root, result, x); // Get all nodes at level x
 
     if(result.empty()){
-        cout << "Invalid\n";
-    } else{
-        for(int val:result){
-        cout << val << " ";
+        cout << "Invalid\n"; // If no nodes found at level x
+    } else {
+        for(int val : result){
+            cout << val << " "; // Print all values at level x
+        }
     }
-    }
-    
+
     return 0;
 }
+
 
 /*
 https://www.hackerrank.com/contests/assignment-04-a-basic-data-structure-a-batch-07/challenges/level-nodes-2/problem
