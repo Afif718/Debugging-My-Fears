@@ -1,19 +1,33 @@
 class Solution {
 public:
     bool checkTree(TreeNode* root) {
-        if(root == NULL){
+        // Edge case: if the root is NULL, return false (tree doesn't exist)
+        if (root == NULL) {
             return false;
         }
 
+        // Store the root node's value
         int root_val = root->val;
-        
 
+        // Get left child's value if it exists; otherwise use 0
         int l = root->left ? root->left->val : 0;
-        int r = root->left ? root->right->val : 0;
 
-        return root_val == l+r;
+        // ❌ FIX: You accidentally checked `root->left` again instead of `root->right`
+        // int r = root->left ? root->right->val : 0; ← incorrect
+        // ✅ Corrected:
+        int r = root->right ? root->right->val : 0;
+
+        // Visualization:
+        //       root
+        //      /    \
+        //     l      r
+        // Check if root's value == l + r
+
+        // Return whether root value is equal to sum of left and right child values
+        return root_val == l + r;
     }
 };
+
 
 /*
 https://leetcode.com/problems/root-equals-sum-of-children/description/

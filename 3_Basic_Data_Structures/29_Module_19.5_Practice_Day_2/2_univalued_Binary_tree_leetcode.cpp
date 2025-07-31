@@ -1,41 +1,58 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
 class Solution {
 public:
     bool isUnivalTree(TreeNode* root) {
-        // if(root == NULL){
-        //     return 0;
-        // }
-
+        // Store the value of the root node. All other nodes should have the same value to be considered a unival tree.
         int root_val = root->val;
+
+        // We assume initially the tree is univalued.
         bool isSame = true;
 
+        // Queue for level-order (BFS) traversal
         queue<TreeNode*> q;
 
-        if(root != NULL){
+        // If root is not null, add it to the queue
+        if (root != NULL) {
             q.push(root);
         }
 
-        while(!q.empty()){
+        // Begin level-order traversal
+        while (!q.empty()) {
+            // Get the front node from the queue
             TreeNode* parent = q.front();
             q.pop();
 
-            if(parent->val != root_val){
+            // If the value of the current node is not equal to the root's value,
+            // the tree is not univalued. Return false.
+            if (parent->val != root_val) {
                 return false;
-                break;
             }
 
-
-            if(parent->left){
+            // If the left child exists, add it to the queue
+            if (parent->left) {
                 q.push(parent->left);
             }
 
-            if(parent->right){
+            // If the right child exists, add it to the queue
+            if (parent->right) {
                 q.push(parent->right);
             }
         }
 
+        // If we reach here, all nodes had the same value as the root
         return isSame;
     }
 };
+
 
 /*
 965. Univalued Binary Tree
